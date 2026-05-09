@@ -72,7 +72,7 @@
 .filter-select {
   appearance: none;
   -webkit-appearance: none;
-  padding: var(--spacing-200) var(--spacing-600) var(--spacing-200) var(--spacing-300);
+  padding: var(--spacing-100) var(--spacing-600) var(--spacing-100) var(--spacing-100);
   border: 1.5px solid var(--color-neutral-300);
   border-radius: var(--radius-8);
   background-color: var(--color-neutral-0);
@@ -91,13 +91,12 @@
 
 .search-wrapper {
   position: relative;
-  flex: 1;
   min-width: 260px;
   max-width: 360px;
 
   .search-icon {
     position: absolute;
-    left: var(--spacing-200);
+    left: var(--spacing-100);
     top: 50%;
     transform: translateY(-50%);
     width: 20px;
@@ -108,7 +107,7 @@
 
 .search-input {
   width: 100%;
-  padding: var(--spacing-200) var(--spacing-200) var(--spacing-200) var(--spacing-600);
+  padding: var(--spacing-100) var(--spacing-100) var(--spacing-100) var(--spacing-400);
   border: 1.5px solid var(--color-neutral-300);
   border-radius: var(--radius-8);
   background-color: var(--color-neutral-0);

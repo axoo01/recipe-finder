@@ -1,59 +1,147 @@
-# RecipeFinderWebsite
+# Healthy Recipe Finder
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.23.
+A responsive recipe discovery web application built with **Angular 19** and **Angular Signals**. Users can browse, search, and filter a curated collection of healthy whole-food recipes — all without a backend, routing, or external state management.
 
-## Development server
+---
 
-To start a local development server, run:
+## Live Demo
+
+[Live Demo](#) — _coming soon_
+
+---
+
+## Overview
+
+Healthy Recipe Finder lets users:
+
+- Browse 8 hand-picked healthy recipes in a clean card-based layout
+- Search recipes by **name or ingredient** in real time
+- Filter by **maximum prep time** and **maximum cook time** independently
+- Navigate between a **Home**, **About**, and **Recipes** view
+- See the total number of matching recipes update instantly as filters change
+
+---
+
+## Tech Stack
+
+| Layer | Choice |
+|---|---|
+| Framework | Angular 19 (standalone components) |
+| State | Angular Signals — `signal()`, `computed()`, `effect()` |
+| Styling | SCSS with CSS custom properties (design tokens) |
+| Data | Static TypeScript array (no HTTP, no backend) |
+| Fonts | Nunito & Nunito Sans (variable fonts) |
+
+---
+
+## How It Works
+
+### State management with Signals
+
+All reactive state lives in `AppComponent`:
+
+```typescript
+readonly currentView  = signal<AppView>('home');  // which page is visible
+readonly searchQuery  = signal('');                // live search input
+readonly maxPrepTime  = signal(999);               // prep time filter (999 = any)
+readonly maxCookTime  = signal(999);               // cook time filter (999 = any)
+
+readonly filteredRecipes = computed(() => {
+  // re-runs automatically whenever searchQuery, maxPrepTime, or maxCookTime changes
+});
+
+readonly filteredCount = computed(() => this.filteredRecipes().length);
+```
+
+- **`signal()`** holds mutable state
+- **`computed()`** derives the filtered recipe list and count — Angular re-evaluates it only when its dependencies change
+- **`effect()`** logs every view change and every filter change to the console for observability
+
+### View switching (no routing)
+
+Instead of Angular Router, a single `currentView` signal drives which page is shown:
+
+```typescript
+showHome():    void { this.currentView.set('home'); }
+showAbout():   void { this.currentView.set('about'); }
+showRecipes(): void { this.currentView.set('recipes'); }
+```
+
+The template uses `@if` blocks to conditionally render each page. Every view transition plays a CSS fade + slide-up animation.
+
+### Filtering
+
+`RecipesComponent` receives `maxPrepTime` and `maxCookTime` as signal inputs and emits change events back to `AppComponent`. The `filteredRecipes` computed signal re-evaluates instantly:
+
+```typescript
+readonly filteredRecipes = computed(() =>
+  this.recipes().filter(recipe =>
+    recipe.prepMinutes  <= this.maxPrepTime() &&
+    recipe.cookMinutes  <= this.maxCookTime() &&
+    (recipe.title.toLowerCase().includes(query) ||
+     recipe.ingredients.some(i => i.toLowerCase().includes(query)))
+  )
+);
+```
+
+---
+
+## Project Structure
+
+```
+src/
+└── app/
+    ├── app.component.*          # Root — signals, computed, view switching
+    ├── data/
+    │   └── recipes.data.ts      # Static array of 8 Recipe objects
+    ├── models/
+    │   └── recipe.model.ts      # Recipe & RecipeImage interfaces
+    └── components/
+        ├── navbar/              # Nav links + active underline + outputs
+        ├── hero/                # Landing hero section
+        ├── features/            # Three feature highlights
+        ├── real-life/           # "30 minutes" real-life section
+        ├── recipes/             # Search bar, time filters, recipe grid
+        ├── recipe-card/         # Individual recipe card
+        ├── about/               # About page (4 sections)
+        ├── cta/                 # Call-to-action banner
+        └── footer/              # Footer with social links
+```
+
+---
+
+## Getting Started
+
+**Prerequisites:** Node.js 18+ and Angular CLI 19
 
 ```bash
+# Install dependencies
+npm install
+
+# Start the dev server
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Open [http://localhost:4200](http://localhost:4200) in your browser. The app hot-reloads on every file save.
 
 ```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
+# Production build
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Build artifacts are written to `dist/recipe-finder-website/`.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Design System
 
-```bash
-ng test
-```
+All visual tokens are defined as CSS custom properties in `src/styles.scss`:
 
-## Running end-to-end tests
+| Token group | Examples |
+|---|---|
+| Colors | `--color-neutral-900`, `--color-orange-500`, `--color-teal-500` |
+| Spacing | `--spacing-100` (8px) → `--spacing-1600` (128px) |
+| Radius | `--radius-8` → `--radius-full` |
+| Fonts | `--font-nunito`, `--font-nunito-sans` |
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+UI design source: [Figma — Healthy Recipe Website](https://www.figma.com/design/jbMy8QXrEWy7OozLk3wV76/healthy-recipe-website)

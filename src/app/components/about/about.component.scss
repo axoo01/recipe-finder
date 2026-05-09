@@ -39,19 +39,25 @@
   padding: var(--spacing-1000) var(--spacing-800);
 }
 
+.mission,
+.why-we-exist,
+.food-philosophy {
+  border-bottom: 1px solid var(--color-neutral-200);
+}
+
 // ── Mission ──────────────────────────────────────────────────
 
 .badge {
-  display: inline-block;
   background-color: var(--color-orange-500);
-  color: var(--color-neutral-0);
+  color: var(--color-neutral-900);
   font-family: var(--font-nunito-sans);
   font-weight: 700;
   font-size: 14px;
-  line-height: 150%;
-  padding: var(--spacing-050) var(--spacing-150);
-  border-radius: var(--radius-full);
+  padding: 0.5rem;
+  width: 6.5rem;
+  border-radius: var(--radius-6);
   margin-bottom: var(--spacing-200);
+  word-spacing: 3px;
 }
 
 .mission-text {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 
 @Component({
   selector: 'app-hero',
@@ -6,7 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './hero.component.scss',
 })
 export class HeroComponent {
-  scrollToRecipes(): void {
-    document.getElementById('recipes')?.scrollIntoView({ behavior: 'smooth' });
-  }
+  browseClick = output<void>();
 }

@@ -1,21 +1,25 @@
-<app-navbar />
-
-<app-hero />
-
-<app-features />
-
-<app-real-life />
-
-<app-recipes
-  id="recipes"
-  [filteredRecipes]="filteredRecipes()"
-  [filteredCount]="filteredCount()"
-  [searchQuery]="searchQuery()"
-  [maxTime]="maxTime()"
-  (queryChange)="searchQuery.set($event)"
-  (maxTimeChange)="maxTime.set($event)"
+<app-navbar
+  [currentView]="currentView()"
+  (homeClick)="showHome()"
+  (recipesClick)="showRecipes()"
 />
 
-<app-cta />
+@if (currentView() === 'home') {
+  <app-hero (browseClick)="showRecipes()" />
+  <app-features />
+  <app-real-life />
+  <app-cta (browseClick)="showRecipes()" />
+  <app-footer />
+}
 
-<app-footer />
+@if (currentView() === 'recipes') {
+  <app-recipes
+    [filteredRecipes]="filteredRecipes()"
+    [filteredCount]="filteredCount()"
+    [searchQuery]="searchQuery()"
+    [maxTime]="maxTime()"
+    (queryChange)="searchQuery.set($event)"
+    (maxTimeChange)="maxTime.set($event)"
+  />
+  <app-footer />
+}

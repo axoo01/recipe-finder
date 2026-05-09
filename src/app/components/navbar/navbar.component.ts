@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
+import { AppView } from '../../app.component';
 
 @Component({
   selector: 'app-navbar',
@@ -6,8 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
-  scrollToRecipes(event?: Event): void {
-    event?.preventDefault();
-    document.getElementById('recipes')?.scrollIntoView({ behavior: 'smooth' });
-  }
+  currentView = input<AppView>('home');
+
+  homeClick = output<void>();
+  recipesClick = output<void>();
 }

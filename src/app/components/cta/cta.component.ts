@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 
 @Component({
   selector: 'app-cta',
@@ -6,7 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './cta.component.scss',
 })
 export class CtaComponent {
-  scrollToRecipes(): void {
-    document.getElementById('recipes')?.scrollIntoView({ behavior: 'smooth' });
-  }
+  browseClick = output<void>();
 }

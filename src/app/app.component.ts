@@ -9,6 +9,8 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 import { CtaComponent } from './components/cta/cta.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+export type AppView = 'home' | 'recipes';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -24,6 +26,8 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
 })
 export class AppComponent {
+  readonly currentView = signal<AppView>('home');
+
   readonly recipes = signal<Recipe[]>(RECIPES);
   readonly searchQuery = signal('');
   readonly maxTime = signal(60);
@@ -34,16 +38,13 @@ export class AppComponent {
 
     return this.recipes().filter((recipe) => {
       const totalTime = recipe.prepMinutes + recipe.cookMinutes;
-      const withinTime = totalTime <= limit;
-
-      if (!withinTime) return false;
+      if (totalTime > limit) return false;
       if (!query) return true;
 
       const matchesTitle = recipe.title.toLowerCase().includes(query);
       const matchesIngredient = recipe.ingredients.some((ing) =>
         ing.toLowerCase().includes(query)
       );
-
       return matchesTitle || matchesIngredient;
     });
   });
@@ -52,9 +53,23 @@ export class AppComponent {
 
   constructor() {
     effect(() => {
+      console.log(`[View] currentView="${this.currentView()}"`);
+    });
+
+    effect(() => {
       console.log(
         `[Filters] query="${this.searchQuery()}" maxTime=${this.maxTime()}min → ${this.filteredCount()} result(s)`
       );
     });
+  }
+
+  showHome(): void {
+    this.currentView.set('home');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  showRecipes(): void {
+    this.currentView.set('recipes');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

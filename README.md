@@ -6,7 +6,7 @@ A responsive recipe discovery web application built with **Angular 19** and **An
 
 ## Live Demo
 
-[Live Demo](#) — _coming soon_
+[Live Demo](https://recipes-finder-appx.netlify.app/)
 
 ---
 

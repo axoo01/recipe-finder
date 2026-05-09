@@ -74,29 +74,29 @@
 }
 
 .pattern-fork {
-  left: var(--spacing-600);
+  left: 0;
   bottom: 0;
-  height: 85%;
+  height: 110%;
   opacity: 0.5;
 }
 
 .pattern-squiggle-left {
-  left: var(--spacing-400);
-  bottom: var(--spacing-300);
-  width: 60px;
+  left: var(--spacing-800);
+  bottom: var(--spacing-400);
+  width: 64px;
 }
 
 .pattern-knife {
-  right: var(--spacing-600);
+  right: 0;
   bottom: 0;
-  height: 85%;
+  height: 110%;
   opacity: 0.5;
 }
 
 .pattern-squiggle-right {
-  right: var(--spacing-400);
-  top: var(--spacing-300);
-  width: 60px;
+  right: var(--spacing-800);
+  top: var(--spacing-400);
+  width: 64px;
 }
 
 @media (max-width: 768px) {
@@ -114,7 +114,7 @@
 
   .pattern-fork,
   .pattern-knife {
-    height: 60%;
+    height: 80%;
     opacity: 0.3;
   }
 }

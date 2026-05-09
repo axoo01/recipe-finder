@@ -17,9 +17,11 @@
     [filteredRecipes]="filteredRecipes()"
     [filteredCount]="filteredCount()"
     [searchQuery]="searchQuery()"
-    [maxTime]="maxTime()"
+    [maxPrepTime]="maxPrepTime()"
+    [maxCookTime]="maxCookTime()"
     (queryChange)="searchQuery.set($event)"
-    (maxTimeChange)="maxTime.set($event)"
+    (maxPrepTimeChange)="maxPrepTime.set($event)"
+    (maxCookTimeChange)="maxCookTime.set($event)"
   />
   <app-footer />
 }

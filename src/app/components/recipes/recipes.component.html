@@ -1,11 +1,41 @@
 <section class="recipes">
   <div class="recipes-container">
     <div class="recipes-header">
-      <h2>Find your recipe</h2>
-      <p class="results-count">Showing {{ filteredCount() }} {{ filteredCount() === 1 ? 'recipe' : 'recipes' }}</p>
+      <h2>Explore our simple, healthy recipes</h2>
+      <p>Discover eight quick, whole-food dishes that fit real-life schedules and taste amazing. Use the search bar to find a recipe by name or ingredient, or simply scroll the list and let something delicious catch your eye.</p>
     </div>
 
     <div class="recipes-filters">
+      <div class="filters-left">
+        <div class="select-wrapper">
+          <select
+            class="filter-select"
+            [value]="maxPrepTime()"
+            (change)="onMaxPrepTimeChange($event)"
+          >
+            <option value="999">Max Prep Time</option>
+            @for (t of timeOptions; track t) {
+              <option [value]="t">{{ t }} mins</option>
+            }
+          </select>
+          <img src="assets/images/icon-chevron-down.svg" alt="" class="select-chevron">
+        </div>
+
+        <div class="select-wrapper">
+          <select
+            class="filter-select"
+            [value]="maxCookTime()"
+            (change)="onMaxCookTimeChange($event)"
+          >
+            <option value="999">Max Cook Time</option>
+            @for (t of timeOptions; track t) {
+              <option [value]="t">{{ t }} mins</option>
+            }
+          </select>
+          <img src="assets/images/icon-chevron-down.svg" alt="" class="select-chevron">
+        </div>
+      </div>
+
       <div class="search-wrapper">
         <img src="assets/images/icon-search.svg" alt="" class="search-icon">
         <input
@@ -14,20 +44,6 @@
           [value]="searchQuery()"
           (input)="onSearchInput($event)"
           class="search-input"
-        >
-      </div>
-
-      <div class="time-filter">
-        <label class="filter-label">
-          Max time: <strong>{{ maxTime() }} min</strong>
-        </label>
-        <input
-          type="range"
-          min="0"
-          max="60"
-          [value]="maxTime()"
-          (input)="onMaxTimeInput($event)"
-          class="time-slider"
         >
       </div>
     </div>
@@ -42,7 +58,7 @@
       </ul>
     } @else {
       <div class="empty-state">
-        <p>No recipes match your search. Try different keywords or increase the time limit.</p>
+        <p>No recipes match your search. Try different keywords or adjust the time filters.</p>
       </div>
     }
   </div>

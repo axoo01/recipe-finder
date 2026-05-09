@@ -30,15 +30,17 @@ export class AppComponent {
 
   readonly recipes = signal<Recipe[]>(RECIPES);
   readonly searchQuery = signal('');
-  readonly maxTime = signal(60);
+  readonly maxPrepTime = signal(999);
+  readonly maxCookTime = signal(999);
 
   readonly filteredRecipes = computed(() => {
     const query = this.searchQuery().toLowerCase().trim();
-    const limit = this.maxTime();
+    const maxPrep = this.maxPrepTime();
+    const maxCook = this.maxCookTime();
 
     return this.recipes().filter((recipe) => {
-      const totalTime = recipe.prepMinutes + recipe.cookMinutes;
-      if (totalTime > limit) return false;
+      if (recipe.prepMinutes > maxPrep) return false;
+      if (recipe.cookMinutes > maxCook) return false;
       if (!query) return true;
 
       const matchesTitle = recipe.title.toLowerCase().includes(query);
@@ -58,7 +60,7 @@ export class AppComponent {
 
     effect(() => {
       console.log(
-        `[Filters] query="${this.searchQuery()}" maxTime=${this.maxTime()}min → ${this.filteredCount()} result(s)`
+        `[Filters] query="${this.searchQuery()}" maxPrep=${this.maxPrepTime()}min maxCook=${this.maxCookTime()}min → ${this.filteredCount()} result(s)`
       );
     });
   }

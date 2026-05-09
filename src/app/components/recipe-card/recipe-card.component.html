@@ -7,15 +7,25 @@
   </div>
   <div class="card-body">
     <h3>{{ recipe().title }}</h3>
+    <p class="card-overview">{{ recipe().overview }}</p>
     <div class="card-meta">
-      <span class="meta-item">
-        <img src="assets/images/icon-prep-time.svg" alt="">
-        {{ recipe().prepMinutes }} min prep
-      </span>
-      <span class="meta-item">
-        <img src="assets/images/icon-cook-time.svg" alt="">
-        {{ recipe().cookMinutes }} min cook
-      </span>
+      <div class="meta-row">
+        <span class="meta-item">
+          <img src="assets/images/icon-servings.svg" alt="">
+          Servings: {{ recipe().servings }}
+        </span>
+        <span class="meta-item">
+          <img src="assets/images/icon-prep-time.svg" alt="">
+          Prep: {{ recipe().prepMinutes }} mins
+        </span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-item">
+          <img src="assets/images/icon-cook-time.svg" alt="">
+          Cook: {{ recipe().cookMinutes }} mins
+        </span>
+      </div>
     </div>
+    <button class="btn-view-recipe">View Recipe</button>
   </div>
 </article>

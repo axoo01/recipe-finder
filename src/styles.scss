@@ -1,1 +1,241 @@
-/* You can add global styles to this file, and also import other style files */
+// =============================================================
+// FONTS
+// =============================================================
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('/assets/fonts/Nunito/Nunito-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('/assets/fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('/assets/fonts/Nunito_Sans/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('/assets/fonts/Nunito_Sans/NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+// =============================================================
+// DESIGN TOKENS
+// =============================================================
+
+:root {
+  // --- Colors ---
+  --color-neutral-900: #163a34;
+  --color-neutral-600: #395852;
+  --color-neutral-300: #d0dcd9;
+  --color-neutral-200: #e0e6e3;
+  --color-neutral-100: #f6f5f1;
+  --color-neutral-0:   #ffffff;
+  --color-orange-500:  #fe9f6b;
+  --color-teal-500:    #49ac9b;
+  --color-indigo-500:  #697ddb;
+
+  // --- Font families ---
+  --font-nunito:      'Nunito', sans-serif;
+  --font-nunito-sans: 'Nunito Sans', sans-serif;
+
+  // --- Spacing ---
+  --spacing-0:    0px;
+  --spacing-025:  2px;
+  --spacing-050:  4px;
+  --spacing-075:  6px;
+  --spacing-100:  8px;
+  --spacing-125:  10px;
+  --spacing-150:  12px;
+  --spacing-200:  16px;
+  --spacing-250:  20px;
+  --spacing-300:  24px;
+  --spacing-400:  32px;
+  --spacing-500:  40px;
+  --spacing-600:  48px;
+  --spacing-800:  64px;
+  --spacing-1000: 80px;
+  --spacing-1200: 96px;
+  --spacing-1400: 112px;
+  --spacing-1600: 128px;
+  --spacing-1800: 140px;
+
+  // --- Border radius ---
+  --radius-0:    0px;
+  --radius-4:    4px;
+  --radius-6:    6px;
+  --radius-8:    8px;
+  --radius-10:   10px;
+  --radius-12:   12px;
+  --radius-16:   16px;
+  --radius-20:   20px;
+  --radius-24:   24px;
+  --radius-full: 999px;
+}
+
+// =============================================================
+// TYPOGRAPHY MIXINS  (use these inside component SCSS files)
+// =============================================================
+// Preset 1  — Nunito ExtraBold  72px / 110% / -2px  (hero heading)
+// Preset 2  — Nunito ExtraBold  48px / 120% / -2px  (section heading)
+// Preset 3  — Nunito Bold       32px / 130% / -1px
+// Preset 4  — Nunito Bold       24px / 130% / -1px
+// Preset 5  — Nunito Bold       20px / 140% / -0.5px
+// Preset 6  — Nunito Sans Med   20px / 150% / -0.4px
+// Preset 7  — Nunito SemiBold   18px / 150% / -0.3px
+// Preset 8  — Nunito Sans Bold  16px / 150% / -0.3px
+// Preset 9  — Nunito Sans Med   16px / 150% / -0.3px
+// Preset 10 — Nunito Sans Bold  14px / 150% / -0.3px
+
+@mixin text-preset-1 {
+  font-family: var(--font-nunito);
+  font-weight: 800;
+  font-size: 72px;
+  line-height: 110%;
+  letter-spacing: -2px;
+
+  @media (max-width: 768px) {
+    font-size: 64px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 52px;
+  }
+}
+
+@mixin text-preset-2 {
+  font-family: var(--font-nunito);
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 120%;
+  letter-spacing: -2px;
+
+  @media (max-width: 480px) {
+    font-size: 40px;
+  }
+}
+
+@mixin text-preset-3 {
+  font-family: var(--font-nunito);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 130%;
+  letter-spacing: -1px;
+}
+
+@mixin text-preset-4 {
+  font-family: var(--font-nunito);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 130%;
+  letter-spacing: -1px;
+}
+
+@mixin text-preset-5 {
+  font-family: var(--font-nunito);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.5px;
+}
+
+@mixin text-preset-6 {
+  font-family: var(--font-nunito-sans);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 150%;
+  letter-spacing: -0.4px;
+}
+
+@mixin text-preset-7 {
+  font-family: var(--font-nunito);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: -0.3px;
+}
+
+@mixin text-preset-8 {
+  font-family: var(--font-nunito-sans);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.3px;
+}
+
+@mixin text-preset-9 {
+  font-family: var(--font-nunito-sans);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.3px;
+}
+
+@mixin text-preset-10 {
+  font-family: var(--font-nunito-sans);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: -0.3px;
+}
+
+// =============================================================
+// RESET
+// =============================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-nunito-sans);
+  font-weight: 500;
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-900);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}

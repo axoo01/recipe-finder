@@ -10,5 +10,6 @@ export class NavbarComponent {
   currentView = input<AppView>('home');
 
   homeClick = output<void>();
+  aboutClick = output<void>();
   recipesClick = output<void>();
 }

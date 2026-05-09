@@ -8,8 +8,9 @@ import { RealLifeComponent } from './components/real-life/real-life.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { CtaComponent } from './components/cta/cta.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AboutComponent } from './components/about/about.component';
 
-export type AppView = 'home' | 'recipes';
+export type AppView = 'home' | 'recipes' | 'about';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,7 @@ export type AppView = 'home' | 'recipes';
     RecipesComponent,
     CtaComponent,
     FooterComponent,
+    AboutComponent,
   ],
 })
 export class AppComponent {
@@ -67,6 +69,11 @@ export class AppComponent {
 
   showHome(): void {
     this.currentView.set('home');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  showAbout(): void {
+    this.currentView.set('about');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

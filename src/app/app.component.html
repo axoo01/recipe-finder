@@ -1,6 +1,7 @@
 <app-navbar
   [currentView]="currentView()"
   (homeClick)="showHome()"
+  (aboutClick)="showAbout()"
   (recipesClick)="showRecipes()"
 />
 
@@ -8,6 +9,12 @@
   <app-hero (browseClick)="showRecipes()" />
   <app-features />
   <app-real-life />
+  <app-cta (browseClick)="showRecipes()" />
+  <app-footer />
+}
+
+@if (currentView() === 'about') {
+  <app-about />
   <app-cta (browseClick)="showRecipes()" />
   <app-footer />
 }

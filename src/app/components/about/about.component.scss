@@ -1,0 +1,237 @@
+:host {
+  display: block;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// ── Shared grid layouts ──────────────────────────────────────
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-800);
+  align-items: center;
+}
+
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-800);
+  align-items: start;
+}
+
+.beyond-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-800);
+  align-items: center;
+}
+
+// ── Section padding ──────────────────────────────────────────
+
+.mission,
+.why-we-exist,
+.food-philosophy,
+.beyond {
+  padding: var(--spacing-1000) var(--spacing-800);
+}
+
+// ── Mission ──────────────────────────────────────────────────
+
+.badge {
+  display: inline-block;
+  background-color: var(--color-orange-500);
+  color: var(--color-neutral-0);
+  font-family: var(--font-nunito-sans);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 150%;
+  padding: var(--spacing-050) var(--spacing-150);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-200);
+}
+
+.mission-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-300);
+
+  h2 {
+    font-family: var(--font-nunito);
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 120%;
+    letter-spacing: -2px;
+    color: var(--color-neutral-900);
+  }
+
+  p {
+    font-family: var(--font-nunito-sans);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--color-neutral-600);
+  }
+}
+
+.mission-image {
+  position: relative;
+  border-radius: var(--radius-16);
+  overflow: hidden;
+
+  picture,
+  img:not(.mission-squiggle) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .mission-squiggle {
+    position: absolute;
+    bottom: var(--spacing-400);
+    right: calc(-1 * var(--spacing-400));
+    width: 72px;
+    pointer-events: none;
+  }
+}
+
+// ── Why we exist / Food philosophy ──────────────────────────
+
+.why-we-exist h2,
+.food-philosophy h2 {
+  font-family: var(--font-nunito);
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 120%;
+  letter-spacing: -2px;
+  color: var(--color-neutral-900);
+  position: sticky;
+  top: var(--spacing-400);
+}
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-500);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  gap: var(--spacing-200);
+  align-items: flex-start;
+
+  .item-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  h3 {
+    font-family: var(--font-nunito-sans);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--color-neutral-900);
+    margin-bottom: var(--spacing-100);
+  }
+
+  p {
+    font-family: var(--font-nunito-sans);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--color-neutral-600);
+  }
+}
+
+// ── Beyond the plate ─────────────────────────────────────────
+
+.beyond-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-300);
+
+  h2 {
+    font-family: var(--font-nunito);
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 120%;
+    letter-spacing: -2px;
+    color: var(--color-neutral-900);
+  }
+
+  p {
+    font-family: var(--font-nunito-sans);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--color-neutral-600);
+  }
+}
+
+.beyond-list {
+  list-style: disc;
+  padding-left: var(--spacing-300);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-100);
+
+  li {
+    font-family: var(--font-nunito-sans);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--color-neutral-600);
+  }
+}
+
+.beyond-image {
+  border-radius: var(--radius-16);
+  overflow: hidden;
+
+  picture,
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+// ── Responsive ───────────────────────────────────────────────
+
+@media (max-width: 768px) {
+  .mission,
+  .why-we-exist,
+  .food-philosophy,
+  .beyond {
+    padding: var(--spacing-800) var(--spacing-400);
+  }
+
+  .mission-grid,
+  .split-grid,
+  .beyond-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-500);
+  }
+
+  .mission-text h2,
+  .why-we-exist h2,
+  .food-philosophy h2,
+  .beyond-text h2 {
+    font-size: 36px;
+  }
+
+  .why-we-exist h2,
+  .food-philosophy h2 {
+    position: static;
+  }
+}

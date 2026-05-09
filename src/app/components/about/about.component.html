@@ -1,0 +1,75 @@
+<div class="about">
+
+  <section class="mission">
+    <div class="about-container mission-grid">
+      <div class="mission-text">
+        <span class="badge">Our mission</span>
+        <h2>Help more people cook nourishing meals, more often.</h2>
+        <p>Healthy Recipe Finder was created to prove that healthy eating can be convenient, affordable, and genuinely delicious.</p>
+        <p>We showcase quick, whole-food dishes that anyone can master—no fancy equipment, no ultra-processed shortcuts—just honest ingredients and straightforward steps.</p>
+      </div>
+      <div class="mission-image">
+        <picture>
+          <source media="(min-width: 768px)" srcset="assets/images/image-about-our-mission-large.webp">
+          <img src="assets/images/image-about-our-mission-small.webp" alt="Person preparing healthy food in a bright kitchen">
+        </picture>
+        <img src="assets/images/pattern-squiggle-2.svg" alt="" aria-hidden="true" class="mission-squiggle">
+      </div>
+    </div>
+  </section>
+
+  <section class="why-we-exist">
+    <div class="about-container split-grid">
+      <h2>Why we exist</h2>
+      <ul class="item-list">
+        @for (item of whyWeExist; track item.title) {
+          <li class="item">
+            <img src="assets/images/icon-bullet-point.svg" alt="" class="item-icon">
+            <div>
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.body }}</p>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="food-philosophy">
+    <div class="about-container split-grid">
+      <h2>Our food philosophy</h2>
+      <ul class="item-list">
+        @for (item of foodPhilosophy; track item.title) {
+          <li class="item">
+            <img src="assets/images/icon-bullet-point.svg" alt="" class="item-icon">
+            <div>
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.body }}</p>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="beyond">
+    <div class="about-container beyond-grid">
+      <div class="beyond-text">
+        <h2>Beyond the plate</h2>
+        <p>We believe food is a catalyst for community and well-being. By sharing approachable recipes, we hope to:</p>
+        <ul class="beyond-list">
+          @for (item of beyondThePlate; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      </div>
+      <div class="beyond-image">
+        <picture>
+          <source media="(min-width: 768px)" srcset="assets/images/image-about-beyond-the-plate-large.webp">
+          <img src="assets/images/image-about-beyond-the-plate-small.webp" alt="Family cooking together in a bright kitchen">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+</div>

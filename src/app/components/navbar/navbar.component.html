@@ -8,7 +8,10 @@
         <a href="#" (click)="$event.preventDefault(); homeClick.emit()"
            [class.active]="currentView() === 'home'">Home</a>
       </li>
-      <li><a href="#">About</a></li>
+      <li>
+        <a href="#" (click)="$event.preventDefault(); aboutClick.emit()"
+           [class.active]="currentView() === 'about'">About</a>
+      </li>
       <li>
         <a href="#" (click)="$event.preventDefault(); recipesClick.emit()"
            [class.active]="currentView() === 'recipes'">Recipes</a>

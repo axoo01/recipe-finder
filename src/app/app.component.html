@@ -6,30 +6,36 @@
 />
 
 @if (currentView() === 'home') {
-  <app-hero (browseClick)="showRecipes()" />
-  <app-features />
-  <hr class="section-divider">
-  <app-real-life />
-  <app-cta (browseClick)="showRecipes()" />
-  <app-footer />
+  <div class="page-view">
+    <app-hero (browseClick)="showRecipes()" />
+    <app-features />
+    <hr class="section-divider">
+    <app-real-life />
+    <app-cta (browseClick)="showRecipes()" />
+    <app-footer />
+  </div>
 }
 
 @if (currentView() === 'about') {
-  <app-about />
-  <app-cta (browseClick)="showRecipes()" />
-  <app-footer />
+  <div class="page-view">
+    <app-about />
+    <app-cta (browseClick)="showRecipes()" />
+    <app-footer />
+  </div>
 }
 
 @if (currentView() === 'recipes') {
-  <app-recipes
-    [filteredRecipes]="filteredRecipes()"
-    [filteredCount]="filteredCount()"
-    [searchQuery]="searchQuery()"
-    [maxPrepTime]="maxPrepTime()"
-    [maxCookTime]="maxCookTime()"
-    (queryChange)="searchQuery.set($event)"
-    (maxPrepTimeChange)="maxPrepTime.set($event)"
-    (maxCookTimeChange)="maxCookTime.set($event)"
-  />
-  <app-footer />
+  <div class="page-view">
+    <app-recipes
+      [filteredRecipes]="filteredRecipes()"
+      [filteredCount]="filteredCount()"
+      [searchQuery]="searchQuery()"
+      [maxPrepTime]="maxPrepTime()"
+      [maxCookTime]="maxCookTime()"
+      (queryChange)="searchQuery.set($event)"
+      (maxPrepTimeChange)="maxPrepTime.set($event)"
+      (maxCookTimeChange)="maxCookTime.set($event)"
+    />
+    <app-footer />
+  </div>
 }

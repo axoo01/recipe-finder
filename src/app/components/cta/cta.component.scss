@@ -1,0 +1,120 @@
+:host {
+  display: block;
+}
+
+.cta {
+  padding: var(--spacing-800) var(--spacing-800);
+}
+
+.cta-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cta-card {
+  position: relative;
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-24);
+  padding: var(--spacing-1000) var(--spacing-800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-300);
+  position: relative;
+  z-index: 1;
+
+  h2 {
+    font-family: var(--font-nunito);
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 120%;
+    letter-spacing: -2px;
+    color: var(--color-neutral-900);
+  }
+
+  p {
+    font-family: var(--font-nunito-sans);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--color-neutral-600);
+    max-width: 420px;
+  }
+}
+
+.btn-primary {
+  background-color: var(--color-neutral-900);
+  color: var(--color-neutral-0);
+  border: none;
+  border-radius: var(--radius-8);
+  padding: var(--spacing-200) var(--spacing-400);
+  font-family: var(--font-nunito-sans);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: var(--spacing-100);
+
+  &:hover {
+    background-color: var(--color-neutral-600);
+  }
+}
+
+.pattern {
+  position: absolute;
+  pointer-events: none;
+}
+
+.pattern-fork {
+  left: var(--spacing-600);
+  bottom: 0;
+  height: 85%;
+  opacity: 0.5;
+}
+
+.pattern-squiggle-left {
+  left: var(--spacing-400);
+  bottom: var(--spacing-300);
+  width: 60px;
+}
+
+.pattern-knife {
+  right: var(--spacing-600);
+  bottom: 0;
+  height: 85%;
+  opacity: 0.5;
+}
+
+.pattern-squiggle-right {
+  right: var(--spacing-400);
+  top: var(--spacing-300);
+  width: 60px;
+}
+
+@media (max-width: 768px) {
+  .cta {
+    padding: var(--spacing-800) var(--spacing-400);
+  }
+
+  .cta-card {
+    padding: var(--spacing-800) var(--spacing-400);
+  }
+
+  .cta-content h2 {
+    font-size: 32px;
+  }
+
+  .pattern-fork,
+  .pattern-knife {
+    height: 60%;
+    opacity: 0.3;
+  }
+}

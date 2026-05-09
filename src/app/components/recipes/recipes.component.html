@@ -1,0 +1,49 @@
+<section class="recipes">
+  <div class="recipes-container">
+    <div class="recipes-header">
+      <h2>Find your recipe</h2>
+      <p class="results-count">Showing {{ filteredCount() }} {{ filteredCount() === 1 ? 'recipe' : 'recipes' }}</p>
+    </div>
+
+    <div class="recipes-filters">
+      <div class="search-wrapper">
+        <img src="assets/images/icon-search.svg" alt="" class="search-icon">
+        <input
+          type="text"
+          placeholder="Search by name or ingredient..."
+          [value]="searchQuery()"
+          (input)="onSearchInput($event)"
+          class="search-input"
+        >
+      </div>
+
+      <div class="time-filter">
+        <label class="filter-label">
+          Max time: <strong>{{ maxTime() }} min</strong>
+        </label>
+        <input
+          type="range"
+          min="0"
+          max="60"
+          [value]="maxTime()"
+          (input)="onMaxTimeInput($event)"
+          class="time-slider"
+        >
+      </div>
+    </div>
+
+    @if (filteredRecipes().length > 0) {
+      <ul class="recipes-grid">
+        @for (recipe of filteredRecipes(); track recipe.id) {
+          <li>
+            <app-recipe-card [recipe]="recipe" />
+          </li>
+        }
+      </ul>
+    } @else {
+      <div class="empty-state">
+        <p>No recipes match your search. Try different keywords or increase the time limit.</p>
+      </div>
+    }
+  </div>
+</section>

@@ -1,0 +1,125 @@
+:host {
+  display: block;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-squiggle {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-1000) var(--spacing-800);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  h1 {
+    font-family: var(--font-nunito);
+    font-weight: 800;
+    font-size: 72px;
+    line-height: 110%;
+    letter-spacing: -2px;
+    color: var(--color-neutral-900);
+    margin-bottom: var(--spacing-300);
+
+    .highlight {
+      text-decoration: none;
+    }
+  }
+
+  p {
+    font-family: var(--font-nunito-sans);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: -0.4px;
+    color: var(--color-neutral-600);
+    margin-bottom: var(--spacing-500);
+    max-width: 480px;
+  }
+}
+
+.word-bg-wrapper {
+  position: relative;
+  display: inline-block;
+
+  .word-bg-img {
+    position: absolute;
+    top: 50%;
+    bottom: -4px;
+    left: -4px;
+    right: -4px;
+    width: calc(100% + 8px);
+    height: 35px;
+    object-fit: fill;
+    pointer-events: none;
+  }
+
+  .word-text {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: var(--color-neutral-900);
+  color: var(--color-neutral-0);
+  border: none;
+  border-radius: var(--radius-8);
+  padding: var(--spacing-200) var(--spacing-400);
+  font-family: var(--font-nunito-sans);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--color-neutral-600);
+  }
+}
+
+.hero-image {
+  margin-top: var(--spacing-600);
+  border-radius: var(--radius-16);
+  overflow: hidden;
+  border: 10px solid var(--color-neutral-0);
+
+  picture,
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-inner {
+    padding: var(--spacing-800) var(--spacing-400);
+  }
+
+  .hero-content h1 {
+    font-size: 52px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+}

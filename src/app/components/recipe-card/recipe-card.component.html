@@ -1,0 +1,21 @@
+<article class="recipe-card">
+  <div class="card-image">
+    <picture>
+      <source media="(min-width: 768px)" [srcset]="recipe().image.large">
+      <img [src]="recipe().image.small" [alt]="recipe().title">
+    </picture>
+  </div>
+  <div class="card-body">
+    <h3>{{ recipe().title }}</h3>
+    <div class="card-meta">
+      <span class="meta-item">
+        <img src="assets/images/icon-prep-time.svg" alt="">
+        {{ recipe().prepMinutes }} min prep
+      </span>
+      <span class="meta-item">
+        <img src="assets/images/icon-cook-time.svg" alt="">
+        {{ recipe().cookMinutes }} min cook
+      </span>
+    </div>
+  </div>
+</article>

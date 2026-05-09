@@ -1,2 +1,21 @@
-<main>
-</main>
+<app-navbar />
+
+<app-hero />
+
+<app-features />
+
+<app-real-life />
+
+<app-recipes
+  id="recipes"
+  [filteredRecipes]="filteredRecipes()"
+  [filteredCount]="filteredCount()"
+  [searchQuery]="searchQuery()"
+  [maxTime]="maxTime()"
+  (queryChange)="searchQuery.set($event)"
+  (maxTimeChange)="maxTime.set($event)"
+/>
+
+<app-cta />
+
+<app-footer />

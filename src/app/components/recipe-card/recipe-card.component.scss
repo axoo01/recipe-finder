@@ -97,11 +97,11 @@
   border: none;
   border-radius: var(--radius-8);
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: color 0.5s ease;
   margin-top: auto;
 
   &:hover {
-    background-color: var(--color-neutral-700);
+    color: var(--color-orange-500);
   }
 
   &:focus-visible {
